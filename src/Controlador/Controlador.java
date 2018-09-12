@@ -33,10 +33,10 @@ public class Controlador {
      * 
      */
     private Alfabeto alfabetoActual;
-    private List<Alfabeto> dbAlfabetos;
-    private List<Algoritmo> elAlgoritmo;
-    private List<IEscritor> elEscritor;
-
+    private List<Alfabeto> dbAlfabetos = new ArrayList<>();
+    private List<Algoritmo> elAlgoritmo =  new ArrayList<>();
+    private List<IEscritor> elEscritor = new ArrayList<>();
+    
 
 
 
@@ -56,6 +56,7 @@ public class Controlador {
             
             try {
                 while((line = br.readLine()) != null){
+                    //Pensar en algun metodo para organizar los Alfabetos por id/nombre/items
                     Alfabeto tmp = new Alfabeto();
                     if (id == 0){
                         tmp.setId(id);
@@ -88,6 +89,7 @@ public class Controlador {
      */
     public void procesarPeticion(DTOAlgoritmos elDTO) {
         if (validar(elDTO)){
+            predefinirAlfabeto(elDTO);
             activarAlgoritmos(elDTO);
             List<String> resultados = new ArrayList<>();
             if (elDTO.isModoCodificacion()){
@@ -101,9 +103,7 @@ public class Controlador {
                 }
             }
             elDTO.setResultados(resultados);
-            for (int k=0;k<elDTO.getSalidasSelec().size();k++){
-                this.elEscritor.get(k).escribir(elDTO);
-            }
+            escribir(elDTO);
         }
     }
 
@@ -120,8 +120,24 @@ public class Controlador {
      * @return
      */
     private boolean validar(DTOAlgoritmos elDTO) {
-        //No recuerdo esto
-        return true;
+        List<String> resultados = new ArrayList<>();
+        if (elDTO.getElAlfabeto() < 0 || elDTO.getElAlfabeto() > this.dbAlfabetos.size()){
+            resultados.add("Alfabeto invalido");
+        }
+        for (int i=0;i<elDTO.getAlgoritmosSelec().size();i++){
+            if (!(elDTO.getLosAlgoritmos().contains(elDTO.getAlgoritmosSelec().get(i)))){
+                resultados.add("Algoritmo invalido");
+            }
+        }
+        for (int k=0;k<elDTO.getSalidasSelec().size();k++){
+            if (!(elDTO.getLasSalidas().contains(elDTO.getSalidasSelec().get(k)))){
+                resultados.add("Salida invalida");
+            }
+        }
+        if (resultados.size()==0){
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -158,7 +174,14 @@ public class Controlador {
      * @return
      */
     public void escribir(DTOAlgoritmos DTO) {
-        // TODO implement here
+        List<String> resultados = DTO.getResultados();
+        for (int k=0;k<DTO.getSalidasSelec().size();k++){
+                if(this.elEscritor.get(k).escribir(DTO));
+                else{
+                   resultados.add("Error al Escribir en "+elEscritor.get(k));
+                }
+            }
+            DTO.setResultados(resultados);
     }
 
 }

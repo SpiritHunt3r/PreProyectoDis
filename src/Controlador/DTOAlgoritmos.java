@@ -43,6 +43,8 @@ public class DTOAlgoritmos {
      * 
      */
     private boolean modoCodificacion;
+    private List<String> losAlgoritmos = Arrays.asList("Vigenere","Transposicion","CodigoTelefonico");
+    private List<String> lasSalidas = Arrays.asList("TXT","PDF","XML");
 
     public int getElAlfabeto() {
         return elAlfabeto;
@@ -93,4 +95,23 @@ public class DTOAlgoritmos {
         this.modoCodificacion = modoCodificacion;
     }
 
+    public List<String> getLosAlgoritmos() {
+        return losAlgoritmos;
+    }
+
+    public void setLosAlgoritmos(List<String> losAlgoritmos) {
+        this.losAlgoritmos = losAlgoritmos;
+    }
+
+    public List<String> getLasSalidas() {
+        return lasSalidas;
+    }
+
+    public void setLasSalidas(List<String> lasSalidas) {
+        this.lasSalidas = lasSalidas;
+    }
+    
+    
+
+    
 }
