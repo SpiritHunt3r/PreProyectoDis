@@ -3,8 +3,14 @@ package Controlador;
 
 import java.util.*;
 import Modelo.Alfabeto;
+import Modelo.Algoritmo;
 import Modelo.CodigoTelefonico;
+import Modelo.EscritorPDF;
+import Modelo.EscritorTxT;
+import Modelo.EscritorXML;
+import Modelo.IEscritor;
 import Modelo.Transposicion;
+import Modelo.Vigenere;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -21,14 +27,15 @@ public class Controlador {
      * Default constructor
      */
     public Controlador() {
-        CodigoTelefonico Algoritmo_Telefonico = new CodigoTelefonico();
-        Transposicion Algoritmo_Transposicion = new Transposicion();
     }
 
     /**
      * 
      */
     private Alfabeto alfabetoActual;
+    private List<Alfabeto> dbAlfabetos;
+    private List<Algoritmo> elAlgoritmo;
+    private List<IEscritor> elEscritor;
 
 
 
@@ -41,6 +48,7 @@ public class Controlador {
     public List<String> cargarAlfabetos() {
         String Direccion = System.getProperty("user.dir")+"\\src\\BD\\";
         String line;
+        int id = 0;
         List<String> lista_alfabetos = new ArrayList<>();
         try {
             FileReader fr = new FileReader(Direccion+"Alfabetos.txt");
@@ -48,7 +56,20 @@ public class Controlador {
             
             try {
                 while((line = br.readLine()) != null){
+                    Alfabeto tmp = new Alfabeto();
+                    if (id == 0){
+                        tmp.setId(id);
+                        tmp.setNombre("Default");
+                        tmp.setSimbolos(line);
+                    }
+                    else{
+                        tmp.setId(id);
+                        tmp.setNombre("Alfabeto " + String.valueOf(id));
+                        tmp.setSimbolos(line);
+                    }
                     lista_alfabetos.add(line+"\n");
+                    this.dbAlfabetos.add(tmp);
+                    id++;
                 }
             } catch (IOException ex) {
                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
@@ -56,6 +77,7 @@ public class Controlador {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
         return lista_alfabetos;
     }
     
@@ -65,7 +87,24 @@ public class Controlador {
      * @return
      */
     public void procesarPeticion(DTOAlgoritmos elDTO) {
-        // TODO implement here
+        if (validar(elDTO)){
+            activarAlgoritmos(elDTO);
+            List<String> resultados = new ArrayList<>();
+            if (elDTO.isModoCodificacion()){
+                for (int j=0;j<elDTO.getAlgoritmosSelec().size();j++){
+                    resultados.add(this.elAlgoritmo.get(j).codificar(elDTO.getFraseOrigen()));                
+                }
+            }
+            else{
+                for (int j=0;j<elDTO.getAlgoritmosSelec().size();j++){
+                    resultados.add(this.elAlgoritmo.get(j).decodificar(elDTO.getFraseOrigen()));                
+                }
+            }
+            elDTO.setResultados(resultados);
+            for (int k=0;k<elDTO.getSalidasSelec().size();k++){
+                this.elEscritor.get(k).escribir(elDTO);
+            }
+        }
     }
 
     /**
@@ -73,7 +112,7 @@ public class Controlador {
      * @return
      */
     private void predefinirAlfabeto(DTOAlgoritmos elDTO) {
-        // TODO implement here
+        this.alfabetoActual = this.dbAlfabetos.get(elDTO.getElAlfabeto());
     }
 
     /**
@@ -81,8 +120,8 @@ public class Controlador {
      * @return
      */
     private boolean validar(DTOAlgoritmos elDTO) {
-        // TODO implement here
-        return false;
+        //No recuerdo esto
+        return true;
     }
 
     /**
@@ -90,7 +129,28 @@ public class Controlador {
      * @return
      */
     private void activarAlgoritmos(DTOAlgoritmos elDTO) {
-        // TODO implement here
+        for (int i=0;i<elDTO.getAlgoritmosSelec().size();i++){
+           String str = elDTO.getAlgoritmosSelec().get(i);
+           switch (str){
+               case "Vigenere": this.elAlgoritmo.add(new Vigenere());
+                                break;
+               case "Transposicion": this.elAlgoritmo.add(new Transposicion());
+                                break;
+               case "CodigoTelefonico": this.elAlgoritmo.add(new CodigoTelefonico());
+                                break;        
+           }
+        }
+        for (int k=0;k<elDTO.getSalidasSelec().size();k++){
+            String str = elDTO.getSalidasSelec().get(k);
+            switch (str){
+               case "TXT": this.elEscritor.add(new EscritorTxT());
+                                break;
+               case "PDF": this.elEscritor.add(new EscritorPDF());
+                                break;                 
+               case "XML": this.elEscritor.add(new EscritorXML());
+                                break;       
+           }
+        }
     }
 
     /**

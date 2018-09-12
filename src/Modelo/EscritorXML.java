@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * 
  */
-public class EscritorXML {
+public class EscritorXML implements IEscritor{
 
     /**
      * Default constructor

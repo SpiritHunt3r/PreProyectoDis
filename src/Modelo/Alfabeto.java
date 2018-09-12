@@ -40,4 +40,30 @@ public class Alfabeto {
         return false;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getSimbolos() {
+        return simbolos;
+    }
+
+    public void setSimbolos(String simbolos) {
+        this.simbolos = simbolos;
+    }
+
+    
+    
 }

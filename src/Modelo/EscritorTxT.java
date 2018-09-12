@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * 
  */
-public class EscritorTxT {
+public class EscritorTxT implements IEscritor {
 
     /**
      * Default constructor

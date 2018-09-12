@@ -17,7 +17,7 @@ public class DTOAlgoritmos {
     /**
      * 
      */
-    private String elAlfabeto;
+    private int elAlfabeto;
 
     /**
      * 
@@ -44,11 +44,11 @@ public class DTOAlgoritmos {
      */
     private boolean modoCodificacion;
 
-    public String getElAlfabeto() {
+    public int getElAlfabeto() {
         return elAlfabeto;
     }
 
-    public void setElAlfabeto(String elAlfabeto) {
+    public void setElAlfabeto(int elAlfabeto) {
         this.elAlfabeto = elAlfabeto;
     }
 

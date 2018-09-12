@@ -32,7 +32,8 @@ public class Consola {
         /*for (int i=0;i<Alfabetos.size();i++){
             System.out.print(Alfabetos.get(i));
         }*/
-        System.out.print("Hola");
+        System.out.print("Seleccione un alfabeto:");
+        
     }
     
 }

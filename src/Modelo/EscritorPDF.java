@@ -7,7 +7,7 @@ import Controlador.DTOAlgoritmos;
 /**
  * 
  */
-public class EscritorPDF {
+public class EscritorPDF implements IEscritor{
 
     /**
      * Default constructor

@@ -20,7 +20,7 @@ public class Vigenere extends Algoritmo {
      */
     public String codificar(String mensaje) {
         // TODO implement here
-        return "";
+        return "Codifica en Vigenere";
     }
 
     /**
@@ -29,7 +29,7 @@ public class Vigenere extends Algoritmo {
      */
     public String decodificar(String mensaje) {
         // TODO implement here
-        return "";
+        return "Decodifica en Vigenere";
     }
 
 }

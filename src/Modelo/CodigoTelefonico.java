@@ -25,7 +25,7 @@ public class CodigoTelefonico extends Algoritmo {
      */
     public String codificar(String mensaje) {
         // TODO implement here
-        return "";
+        return "Codifica en Telefonico";
     }
 
     /**
@@ -34,7 +34,7 @@ public class CodigoTelefonico extends Algoritmo {
      */
     public String decodificar(String mensaje) {
         // TODO implement here
-        return "";
+        return "decodifica en Telefonico";
     }
 
     /**
