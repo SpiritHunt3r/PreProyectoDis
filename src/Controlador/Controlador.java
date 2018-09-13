@@ -89,7 +89,6 @@ public class Controlador {
      */
     public void procesarPeticion(DTOAlgoritmos elDTO) {
         if (validar(elDTO)){
-            predefinirAlfabeto(elDTO);
             activarAlgoritmos(elDTO);
             List<String> resultados = new ArrayList<>();
             if (elDTO.isModoCodificacion()){
@@ -121,51 +120,60 @@ public class Controlador {
      */
     private boolean validar(DTOAlgoritmos elDTO) {
         List<String> resultados = new ArrayList<>();
-        if (elDTO.getElAlfabeto() < 0 || elDTO.getElAlfabeto() > this.dbAlfabetos.size()){
-            resultados.add("Alfabeto invalido");
-        }
-        for (int i=0;i<elDTO.getAlgoritmosSelec().size();i++){
-            if (!(elDTO.getLosAlgoritmos().contains(elDTO.getAlgoritmosSelec().get(i)))){
-                resultados.add("Algoritmo invalido");
+            predefinirAlfabeto(elDTO);
+            for (int i=0;i<elDTO.getFraseOrigen().length();i++){
+                if (!(containsChar(this.alfabetoActual.getSimbolos(),elDTO.getFraseOrigen().charAt(i)))){
+                    resultados.add("Frase con caracter invalido");
+                    elDTO.setResultados(resultados);
+                    return false;
+                }
             }
-        }
-        for (int k=0;k<elDTO.getSalidasSelec().size();k++){
-            if (!(elDTO.getLasSalidas().contains(elDTO.getSalidasSelec().get(k)))){
-                resultados.add("Salida invalida");
-            }
-        }
-        if (resultados.size()==0){
-            return true;
-        }
-        return false;
+        return true;
     }
 
+    
+    
+    
+    public boolean containsChar(String s, char search) {
+    if (s.length() == 0)
+        return false;
+    else
+        return s.charAt(0) == search || containsChar(s.substring(1), search);
+    }
+    
     /**
      * @param elDTO 
      * @return
      */
     private void activarAlgoritmos(DTOAlgoritmos elDTO) {
         for (int i=0;i<elDTO.getAlgoritmosSelec().size();i++){
-           String str = elDTO.getAlgoritmosSelec().get(i);
-           switch (str){
-               case "Vigenere": this.elAlgoritmo.add(new Vigenere());
-                                break;
-               case "Transposicion": this.elAlgoritmo.add(new Transposicion());
-                                break;
-               case "CodigoTelefonico": this.elAlgoritmo.add(new CodigoTelefonico());
-                                break;        
-           }
+            try {
+                String str = elDTO.getAlgoritmosSelec().get(i);
+                String name = Algoritmo.class.getPackage().getName();
+                this.elAlgoritmo.add((Algoritmo) Class.forName(name+"."+str).newInstance());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        
         for (int k=0;k<elDTO.getSalidasSelec().size();k++){
-            String str = elDTO.getSalidasSelec().get(k);
-            switch (str){
-               case "TXT": this.elEscritor.add(new EscritorTxT());
-                                break;
-               case "PDF": this.elEscritor.add(new EscritorPDF());
-                                break;                 
-               case "XML": this.elEscritor.add(new EscritorXML());
-                                break;       
-           }
+            try {
+                String str = elDTO.getSalidasSelec().get(k);
+                String name = IEscritor.class.getPackage().getName();
+                this.elEscritor.add((IEscritor) Class.forName(name+".Escritor"+str).newInstance());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+             
+           
         }
     }
 

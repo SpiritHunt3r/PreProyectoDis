@@ -46,6 +46,13 @@ public class Consola {
         }
         System.out.print("Seleccione un alfabeto:");
         data.setElAlfabeto(keyInt.nextInt()-1);
+        
+        System.out.println();
+        System.out.println("Frase para procesar:");
+        data.setFraseOrigen(keyFrs.nextLine());
+        
+        
+        
         System.out.println();
         System.out.println("Algoritmos disponibles:");
         for (int i=0;i<data.getLosAlgoritmos().size();i++){
@@ -66,8 +73,8 @@ public class Consola {
         System.out.print("Seleccione las salidas separadas por comas (,):");
         String Salidas = keyStr1.nextLine();
         String[] opts1 = Salidas.split(",");
-        for (int k=0;k<opts.length;k++){
-            lista_salidas.add(data.getLasSalidas().get(Integer.valueOf(opts[k])-1));
+        for (int k=0;k<opts1.length;k++){
+            lista_salidas.add(data.getLasSalidas().get(Integer.valueOf(opts1[k])-1));
         }
         data.setSalidasSelec(lista_salidas);
         System.out.println();
@@ -84,6 +91,9 @@ public class Consola {
         }
         ctrl.procesarPeticion(data);
         
+        System.out.println();
+        System.out.println();
+        System.out.println("Resultados obtenidos:");
         if (data.getResultados() != null){
             for (int i=0;i<data.getResultados().size();i++){
                 System.out.println(data.getResultados().get(i));

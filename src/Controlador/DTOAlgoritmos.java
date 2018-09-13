@@ -44,7 +44,7 @@ public class DTOAlgoritmos {
      */
     private boolean modoCodificacion;
     private List<String> losAlgoritmos = Arrays.asList("Vigenere","Transposicion","CodigoTelefonico");
-    private List<String> lasSalidas = Arrays.asList("TXT","PDF","XML");
+    private List<String> lasSalidas = Arrays.asList("TxT"/*,"PDF","XML"*/);
 
     public int getElAlfabeto() {
         return elAlfabeto;
