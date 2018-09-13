@@ -22,7 +22,7 @@ public class EscritorPDF implements IEscritor{
      */
     public boolean escribir(DTOAlgoritmos dto) {
         // TODO implement here
-        return false;
+        return true;
     }
 
 }

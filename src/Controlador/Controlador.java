@@ -176,9 +176,11 @@ public class Controlador {
     public void escribir(DTOAlgoritmos DTO) {
         List<String> resultados = DTO.getResultados();
         for (int k=0;k<DTO.getSalidasSelec().size();k++){
-                if(this.elEscritor.get(k).escribir(DTO));
+                if(this.elEscritor.get(k).escribir(DTO)){
+                    resultados.add("Resultados importados a "+elEscritor.get(k).getClass().getSimpleName().substring(8));
+                }
                 else{
-                   resultados.add("Error al Escribir en "+elEscritor.get(k));
+                   resultados.add("Error al importar datos a "+elEscritor.get(k).getClass().getSimpleName().substring(8));
                 }
             }
             DTO.setResultados(resultados);

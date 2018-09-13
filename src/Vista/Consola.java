@@ -34,6 +34,7 @@ public class Consola {
         
         //Herramientas para el manejo de datos
         Scanner keyInt = new Scanner(System.in);
+        Scanner keyFrs = new Scanner(System.in);
         Scanner keyStr = new Scanner(System.in);
         Scanner keyStr1 = new Scanner(System.in);
         Scanner keyStr2 = new Scanner(System.in);
@@ -82,7 +83,12 @@ public class Consola {
             data.setModoCodificacion(false);
         }
         ctrl.procesarPeticion(data);
-        System.out.print(data.getResultados().get(0));
+        
+        if (data.getResultados() != null){
+            for (int i=0;i<data.getResultados().size();i++){
+                System.out.println(data.getResultados().get(i));
+            }
+        }
     }
     
 }
