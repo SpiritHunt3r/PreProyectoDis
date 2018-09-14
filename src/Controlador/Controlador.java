@@ -46,40 +46,14 @@ public class Controlador {
      * @return
      */
     public List<String> cargarAlfabetos() {
-        String Direccion = System.getProperty("user.dir")+"\\src\\BD\\";
-        String line;
-        int id = 0;
-        List<String> lista_alfabetos = new ArrayList<>();
-        try {
-            FileReader fr = new FileReader(Direccion+"Alfabetos.txt");
-            BufferedReader br = new BufferedReader(fr);
-            
-            try {
-                while((line = br.readLine()) != null){
-                    //Pensar en algun metodo para organizar los Alfabetos por id/nombre/items
-                    Alfabeto tmp = new Alfabeto();
-                    if (id == 0){
-                        tmp.setId(id);
-                        tmp.setNombre("Default");
-                        tmp.setSimbolos(line);
-                    }
-                    else{
-                        tmp.setId(id);
-                        tmp.setNombre("Alfabeto " + String.valueOf(id));
-                        tmp.setSimbolos(line);
-                    }
-                    lista_alfabetos.add(line+"\n");
-                    this.dbAlfabetos.add(tmp);
-                    id++;
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return lista_alfabetos;
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se realiza coneccion a la Base de datos para los Alfabetos");
+        System.out.println("******************************");
+        DaoAlfabetos BD = new DaoAlfabetos();
+        this.dbAlfabetos = BD.getAlfabetos();
+        return BD.getAlfabetosString();
+
     }
     
 
@@ -88,6 +62,11 @@ public class Controlador {
      * @return
      */
     public void procesarPeticion(DTOAlgoritmos elDTO) {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se inicia el proceso de la peticion");
+        System.out.println("******************************");
+        System.out.println();
         if (validar(elDTO)){
             activarAlgoritmos(elDTO);
             List<String> resultados = new ArrayList<>();
@@ -111,6 +90,11 @@ public class Controlador {
      * @return
      */
     private void predefinirAlfabeto(DTOAlgoritmos elDTO) {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se predefine el Alfabeto");
+        System.out.println("******************************");
+        System.out.println();
         this.alfabetoActual = this.dbAlfabetos.get(elDTO.getElAlfabeto());
     }
 
@@ -119,6 +103,11 @@ public class Controlador {
      * @return
      */
     private boolean validar(DTOAlgoritmos elDTO) {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se inicia el proceso de la validacion de la frase");
+        System.out.println("******************************");
+        System.out.println();
         List<String> resultados = new ArrayList<>();
             predefinirAlfabeto(elDTO);
             for (int i=0;i<elDTO.getFraseOrigen().length();i++){
@@ -134,7 +123,7 @@ public class Controlador {
     
     
     
-    public boolean containsChar(String s, char search) {
+    private boolean containsChar(String s, char search) {
     if (s.length() == 0)
         return false;
     else
@@ -146,6 +135,10 @@ public class Controlador {
      * @return
      */
     private void activarAlgoritmos(DTOAlgoritmos elDTO) {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se cargan los algoritmos y salidas que se van a utilizar");
+        System.out.println("******************************");
         for (int i=0;i<elDTO.getAlgoritmosSelec().size();i++){
             try {
                 String str = elDTO.getAlgoritmosSelec().get(i);
@@ -182,6 +175,10 @@ public class Controlador {
      * @return
      */
     public void escribir(DTOAlgoritmos DTO) {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se inicia el proceso de escribir los resultados en los formatos deseados");
+        System.out.println("******************************");
         List<String> resultados = DTO.getResultados();
         for (int k=0;k<DTO.getSalidasSelec().size();k++){
                 if(this.elEscritor.get(k).escribir(DTO)){
