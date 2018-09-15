@@ -186,6 +186,15 @@ public class Consola {
                     System.out.println(data.getResultados().get(i));
                 }
             }
+            
+            Scanner key = new Scanner(System.in);
+            System.out.println();
+            System.out.print("Desea realizar otra operacion:(Y/N)");
+            String r = key.nextLine();
+            if (r.equals("Y")||r.equals("y")){
+                menu();
+            }
+            
         }
     
 }
