@@ -990,30 +990,13 @@
 											"height": 13,
 											"text": "+getAlfabetos(): List<Alfabeto>",
 											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
-											"_id": "AAAAAAFl2d26CROYK4E=",
-											"_parent": {
-												"$ref": "AAAAAAFlzAofFDdB5C0="
-											},
-											"model": {
-												"$ref": "AAAAAAFl2d25/BOVOBg="
-											},
-											"font": "Arial;13;0",
-											"left": 453,
-											"top": 278,
-											"width": 199.08154296875,
-											"height": 13,
-											"text": "+getAlfabetosString(): List<String>",
-											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 448,
 									"top": 243,
 									"width": 209.08154296875,
-									"height": 53
+									"height": 38
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -1026,7 +1009,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -160,
+									"left": -96,
 									"top": 240,
 									"width": 10,
 									"height": 10
@@ -1042,7 +1025,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -160,
+									"left": -96,
 									"top": 240,
 									"width": 10,
 									"height": 10
@@ -1379,7 +1362,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -280,
+									"left": -216,
 									"top": 536,
 									"width": 10,
 									"height": 10
@@ -1395,7 +1378,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -280,
+									"left": -216,
 									"top": 536,
 									"width": 10,
 									"height": 10
@@ -1698,7 +1681,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -408,
+									"left": -344,
 									"top": 920,
 									"width": 10,
 									"height": 10
@@ -1714,7 +1697,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -408,
+									"left": -344,
 									"top": 920,
 									"width": 10,
 									"height": 10
@@ -1849,7 +1832,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -72,
+									"left": -8,
 									"top": -256,
 									"width": 10,
 									"height": 10
@@ -1950,7 +1933,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -72,
+									"left": -8,
 									"top": -256,
 									"width": 10,
 									"height": 10
@@ -1966,7 +1949,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -72,
+									"left": -8,
 									"top": -256,
 									"width": 10,
 									"height": 10
@@ -2103,7 +2086,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -96,
+									"left": -32,
 									"top": 264,
 									"width": 10,
 									"height": 10
@@ -2153,7 +2136,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -96,
+									"left": -32,
 									"top": 264,
 									"width": 10,
 									"height": 10
@@ -2169,7 +2152,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -96,
+									"left": -32,
 									"top": 264,
 									"width": 10,
 									"height": 10
@@ -5444,6 +5427,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": 64,
 									"top": -16,
 									"width": 10,
 									"height": 10
@@ -5459,6 +5443,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": 64,
 									"top": -16,
 									"width": 10,
 									"height": 10
@@ -5714,6 +5699,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": 64,
 									"top": -16,
 									"width": 10,
 									"height": 10
@@ -5729,6 +5715,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": 64,
 									"top": -16,
 									"width": 10,
 									"height": 10
@@ -7434,6 +7421,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": 64,
 									"top": -16,
 									"width": 10,
 									"height": 10
@@ -7449,6 +7437,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
+									"left": 64,
 									"top": -16,
 									"width": 10,
 									"height": 10
@@ -8685,6 +8674,45 @@
 							"propertyLabel": {
 								"$ref": "AAAAAAFl2eUPZh8i45A="
 							}
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAFl2rxdg5PJv14=",
+							"_parent": {
+								"$ref": "AAAAAAFly/aS9DYFCuo="
+							},
+							"font": "Arial;13;0",
+							"left": 72,
+							"top": 776,
+							"width": 1457,
+							"height": 38,
+							"text": "Se utiliza el modelo visto en clase como base junto algunos cambios en algunos tipos de datos y adicion de algunos elementos tales como listas con los distintos elementos presentes para utilizar necesarios para la implementacion de este en codigo"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAFl2r7kJrRMV1U=",
+							"_parent": {
+								"$ref": "AAAAAAFly/aS9DYFCuo="
+							},
+							"font": "Arial;13;0",
+							"left": 808,
+							"top": 104,
+							"width": 145,
+							"height": 116,
+							"text": "Cabe denotar que no se programo el modificar o agregar alfabetos mucho menos el validar estos debido al uso del unico alfabeto Default"
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAFl2r+bWLk2PSI=",
+							"_parent": {
+								"$ref": "AAAAAAFly/aS9DYFCuo="
+							},
+							"font": "Arial;13;0",
+							"left": 264,
+							"top": 80,
+							"width": 153,
+							"height": 103,
+							"text": "Se agrego un package donde se encuentra localizado el archivo con lo alfabetos para que pueda ser ubicado de facil manera en equipos Windows"
 						}
 					]
 				},
@@ -9676,25 +9704,6 @@
 												"$ref": "AAAAAAFlzAtFGDdpup8="
 											},
 											"type": "List<Alfabeto>",
-											"direction": "return"
-										}
-									]
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAFl2d25/BOVOBg=",
-									"_parent": {
-										"$ref": "AAAAAAFlzAofFDc4xn0="
-									},
-									"name": "getAlfabetosString",
-									"parameters": [
-										{
-											"_type": "UMLParameter",
-											"_id": "AAAAAAFl2d3kSRRf2bY=",
-											"_parent": {
-												"$ref": "AAAAAAFl2d25/BOVOBg="
-											},
-											"type": "List<String>",
 											"direction": "return"
 										}
 									]
