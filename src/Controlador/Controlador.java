@@ -66,11 +66,7 @@ public class Controlador {
      * @return
      */
     public void procesarPeticion(DTOAlgoritmos elDTO) {
-        System.out.println();
-        System.out.println("******************************");
-        System.out.println("Se inicia el proceso de la peticion");
-        System.out.println("******************************");
-        System.out.println();
+        
         if (validar(elDTO)){
             activarAlgoritmos(elDTO);
             List<String> resultados = new ArrayList<>();
@@ -141,7 +137,7 @@ public class Controlador {
     private void activarAlgoritmos(DTOAlgoritmos elDTO) {
         System.out.println();
         System.out.println("******************************");
-        System.out.println("Se cargan los algoritmos y salidas que se van a utilizar");
+        System.out.println("Se cargan los algoritmos");
         System.out.println("******************************");
         for (int i=0;i<elDTO.getAlgoritmosSelec().size();i++){
             try {
@@ -156,7 +152,10 @@ public class Controlador {
                 Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se cargan las Salidas");
+        System.out.println("******************************");
         for (int k=0;k<elDTO.getSalidasSelec().size();k++){
             try {
                 String str = elDTO.getSalidasSelec().get(k);
@@ -179,10 +178,7 @@ public class Controlador {
      * @return
      */
     public void escribir(DTOAlgoritmos DTO) {
-        System.out.println();
-        System.out.println("******************************");
-        System.out.println("Se inicia el proceso de escribir los resultados en los formatos deseados");
-        System.out.println("******************************");
+        
         List<String> resultados = DTO.getResultados();
         for (int k=0;k<DTO.getSalidasSelec().size();k++){
                 if(this.elEscritor.get(k).escribir(DTO)){
