@@ -19,6 +19,10 @@ public class DaoAlfabetos {
      * Default constructor
      */
     public DaoAlfabetos() {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se crea una instancia de DAO");
+        System.out.println("******************************");
     }
 
 
@@ -35,27 +39,6 @@ public class DaoAlfabetos {
     /**
      * @return
      */
-    public List<String> getAlfabetosString() {
-        String Direccion = System.getProperty("user.dir")+"\\src\\BD\\";
-        String line;
-        int id = 0;
-        List<String> lista_alfabetos = new ArrayList<>();
-        try {
-            FileReader fr = new FileReader(Direccion+"Alfabetos.txt");
-            BufferedReader br = new BufferedReader(fr);
-            
-            try {
-                while((line = br.readLine()) != null){
-                    lista_alfabetos.add(line+"\n");
-                }
-            } catch (IOException ex) {
-                Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(Controlador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return lista_alfabetos;
-    }
     
     public List<Alfabeto> getAlfabetos() {
         String Direccion = System.getProperty("user.dir")+"\\src\\BD\\";

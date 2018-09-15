@@ -12,6 +12,10 @@ public class DTOAlgoritmos {
      * Default constructor
      */
     public DTOAlgoritmos() {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se crea una instancia de DTO");
+        System.out.println("******************************");
     }
 
     /**

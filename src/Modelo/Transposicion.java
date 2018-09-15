@@ -12,6 +12,10 @@ public class Transposicion extends Algoritmo {
      * Default constructor
      */
     public Transposicion() {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se crea una instancia de Transposicion");
+        System.out.println("******************************");
     }
 
     /**

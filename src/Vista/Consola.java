@@ -36,9 +36,7 @@ public class Consola {
         Controlador ctrl = new Controlador();
         DTOAlgoritmos data = new DTOAlgoritmos();
         List<String> Alfabetos = ctrl.cargarAlfabetos();
-        
-        //Herramientas para el manejo de datos
-        
+
         Scanner keyFrs = new Scanner(System.in);
         
         

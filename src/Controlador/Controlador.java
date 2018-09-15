@@ -52,7 +52,11 @@ public class Controlador {
         System.out.println("******************************");
         DaoAlfabetos BD = new DaoAlfabetos();
         this.dbAlfabetos = BD.getAlfabetos();
-        return BD.getAlfabetosString();
+        List<String> Alfabetos = new ArrayList<>();
+        for (int i=0;i<this.dbAlfabetos.size();i++){
+            Alfabetos.add(this.dbAlfabetos.get(i).getNombre());
+        }
+        return Alfabetos;
 
     }
     

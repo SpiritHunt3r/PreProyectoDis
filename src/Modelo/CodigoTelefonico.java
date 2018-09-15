@@ -12,6 +12,10 @@ public class CodigoTelefonico extends Algoritmo {
      * Default constructor
      */
     public CodigoTelefonico() {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se crea una instancia de Codigo Telefonico");
+        System.out.println("******************************");
     }
 
     /**

@@ -12,6 +12,10 @@ public class Vigenere extends Algoritmo {
      * Default constructor
      */
     public Vigenere() {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se crea una instancia de Vigenere");
+        System.out.println("******************************");
     }
 
     /**

@@ -12,6 +12,10 @@ public class Alfabeto {
      * Default constructor
      */
     public Alfabeto() {
+        System.out.println();
+        System.out.println("******************************");
+        System.out.println("Se crea una instancia de Alfabeto");
+        System.out.println("******************************");
     }
 
     /**
