@@ -1,6 +1,7 @@
 package Modelo;
 
 
+import Controlador.DTOAlgoritmos;
 import java.util.*;
 
 /**
@@ -22,18 +23,37 @@ public class Transposicion extends Algoritmo {
      * @param mensaje 
      * @return
      */
-    public String codificar(String mensaje) {
-        // TODO implement here
-        return "Codifica en Transposicion";
+    public String codificar(DTOAlgoritmos DTO) {
+        String[] palabras = DTO.getFraseOrigen().split(" ");
+        String r = "";
+        for (String palabra : palabras) {
+            r += reverseIt(palabra) + " ";
+        }
+        return r;
     }
 
     /**
      * @param mensaje 
      * @return
      */
-    public String decodificar(String mensaje) {
-        // TODO implement here
-        return "Decodifica en Transposicion";
+    public String decodificar(DTOAlgoritmos DTO) {
+        String[] palabras = DTO.getFraseOrigen().split(" ");
+        String r = "";
+        for (String palabra : palabras) {
+            r += reverseIt(palabra) + " ";
+        }
+        return r;
     }
+    
+    private static String reverseIt(String source) {
+    int i, len = source.length();
+    StringBuilder dest = new StringBuilder(len);
+
+    for (i = (len - 1); i >= 0; i--){
+        dest.append(source.charAt(i));
+    }
+
+    return dest.toString();
+}
 
 }

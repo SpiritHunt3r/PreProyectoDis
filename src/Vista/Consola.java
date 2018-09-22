@@ -41,7 +41,6 @@ public class Consola {
         
         
         int check=0,optTMP;
-        String tmp;
         
             while (check==0){
                 Scanner keyInt = new Scanner(System.in);
@@ -67,11 +66,40 @@ public class Consola {
                     System.out.println("Seleccione una opcion numerica");
                 }
             }
+            
+            System.out.println("Simbolos del Alfabeto seleccionado: "+ctrl.getSimbolosAlfabeto(data));
 
             System.out.println();
             System.out.println("Frase para procesar:");
             data.setFraseOrigen(keyFrs.nextLine());
             
+            
+            check =0;
+           while (check == 0){
+            Scanner keyStr2 = new Scanner(System.in);
+            System.out.println();
+            System.out.println("Metodos disponibles:");
+            System.out.println("1 - Codificacion");
+            System.out.println("2 - Decodificacion");
+            System.out.print("Seleccione un metodo:");
+            try {
+            int metodo = keyStr2.nextInt();
+            if (metodo ==1){
+                data.setModoCodificacion(true);
+                check = 1;
+            }
+            else if (metodo == 2){
+                data.setModoCodificacion(false);
+                check = 1;
+            }
+            else {
+                System.out.println("Debe seleccionar una de las dos opciones");
+            }
+            }
+            catch(Exception e){
+                System.out.println("Debe ingresar un valor numerico ya sea 1 o 2");
+            }
+           }
             
            check =0;
            while (check==0){
@@ -92,6 +120,19 @@ public class Consola {
                         }
                         else{
                             lista_algoritmos.add(data.getLosAlgoritmos().get(optTMP));
+                            if (data.getLosAlgoritmos().get(optTMP).equals("Vigenere")){
+                                Scanner cifra = new Scanner(System.in);
+                                System.out.print("Ingrese una cifra entre 10-99, en caso de no ser valida o superior el default es 50:");
+                                try{
+                                    data.setCifra(cifra.nextInt());
+                                    if (data.getCifra()<10){
+                                        data.setCifra(50);
+                                    }
+                                }
+                                catch (Exception e){
+                                    data.setCifra(50);
+                                }
+                            }
                         }
 
                     }
@@ -146,32 +187,7 @@ public class Consola {
                 }
            }
            
-           check =0;
-           while (check == 0){
-            Scanner keyStr2 = new Scanner(System.in);
-            System.out.println();
-            System.out.println("Metodos disponibles:");
-            System.out.println("1 - Codificacion");
-            System.out.println("2 - Decodificacion");
-            System.out.print("Seleccione un metodo:");
-            try {
-            int metodo = keyStr2.nextInt();
-            if (metodo ==1){
-                data.setModoCodificacion(true);
-                check = 1;
-            }
-            else if (metodo == 2){
-                data.setModoCodificacion(false);
-                check = 1;
-            }
-            else {
-                System.out.println("Debe seleccionar una de las dos opciones");
-            }
-            }
-            catch(Exception e){
-                System.out.println("Debe ingresar un valor numerico ya sea 1 o 2");
-            }
-           }
+           
             
             
             ctrl.procesarPeticion(data);

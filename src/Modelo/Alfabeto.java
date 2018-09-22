@@ -18,6 +18,13 @@ public class Alfabeto {
         System.out.println("******************************");
     }
 
+    public Alfabeto(int id, String nombre, String simbolos) {
+        this.id = id;
+        this.nombre = nombre;
+        this.simbolos = simbolos;
+    }
+    
+
     /**
      * 
      */

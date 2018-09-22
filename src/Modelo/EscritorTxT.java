@@ -25,7 +25,7 @@ public class EscritorTxT implements IEscritor {
      * @return
      */
     public boolean escribir(DTOAlgoritmos dto) {
-        // TODO implement here
+        
         return true;
     }
 

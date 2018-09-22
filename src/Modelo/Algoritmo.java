@@ -1,6 +1,7 @@
 package Modelo;
 
 
+import Controlador.DTOAlgoritmos;
 import java.util.*;
 
 /**
@@ -18,7 +19,7 @@ public class Algoritmo {
      * @param mensaje 
      * @return
      */
-    public String codificar(String mensaje) {
+    public String codificar(DTOAlgoritmos DTO) {
         // TODO implement here
         return "";
     }
@@ -27,7 +28,7 @@ public class Algoritmo {
      * @param mensaje 
      * @return
      */
-    public String decodificar(String mensaje) {
+    public String decodificar(DTOAlgoritmos DTO) {
         // TODO implement here
         return "";
     }

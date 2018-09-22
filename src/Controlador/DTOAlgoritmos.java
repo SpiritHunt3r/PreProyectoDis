@@ -12,6 +12,9 @@ public class DTOAlgoritmos {
      * Default constructor
      */
     public DTOAlgoritmos() {
+        DAOOperaciones data = new DAOOperaciones();
+        this.lasSalidas = data.getSalidas();
+        this.losAlgoritmos = data.getAlgoritmos();
         System.out.println();
         System.out.println("******************************");
         System.out.println("Se crea una instancia de DTO");
@@ -47,8 +50,9 @@ public class DTOAlgoritmos {
      * 
      */
     private boolean modoCodificacion;
-    private List<String> losAlgoritmos = Arrays.asList("Vigenere","Transposicion","CodigoTelefonico");
-    private List<String> lasSalidas = Arrays.asList("TxT"/*,"PDF","XML"*/);
+    private List<String> losAlgoritmos;
+    private List<String> lasSalidas;
+    private int cifra;
 
     public int getElAlfabeto() {
         return elAlfabeto;
@@ -113,6 +117,14 @@ public class DTOAlgoritmos {
 
     public void setLasSalidas(List<String> lasSalidas) {
         this.lasSalidas = lasSalidas;
+    }
+
+    public int getCifra() {
+        return cifra;
+    }
+
+    public void setCifra(int cifra) {
+        this.cifra = cifra;
     }
     
     

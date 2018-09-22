@@ -1,13 +1,17 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Controlador;
 
-
-import Modelo.Alfabeto;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import jxl.Sheet;
@@ -15,17 +19,15 @@ import jxl.Workbook;
 import jxl.read.biff.BiffException;
 
 /**
- * 
+ *
+ * @author juan_
  */
-public class DaoAlfabetos {
+public class DAOOperaciones {
     private Workbook workbook;
-    private Sheet Alfabetos;
+    private Sheet Algoritmos,Salidas;
     private final String workingDir = System.getProperty("user.dir") + "\\src\\BD\\BD.xls";
-    /**
-     * Default constructor
-     */
-    public DaoAlfabetos() {
-        
+
+    public DAOOperaciones() {
         try {
             BufferedReader file = new BufferedReader( new FileReader(workingDir), 1024);
         } catch (FileNotFoundException ex) {
@@ -38,38 +40,29 @@ public class DaoAlfabetos {
         } catch (BiffException ex) {
             Logger.getLogger(DaoAlfabetos.class.getName()).log(Level.SEVERE, null, ex);
         }
-        this.Alfabetos = workbook.getSheet(0);
-        
-        System.out.println();
-        System.out.println("******************************");
-        System.out.println("Se crea una instancia de DAO");
-        System.out.println("******************************");
-        
-        
+        this.Algoritmos = workbook.getSheet(1);
+        this.Salidas = workbook.getSheet(2);
     }
-
-
-
-    /**
-     * @param obj 
-     * @return
-     */
-    public boolean validar(Object obj) {
-        // TODO implement here
-        return false;
-    }
-
-    /**
-     * @return
-     */
     
-    public List<Alfabeto> getAlfabetos() {
-        List<Alfabeto> lista_alfabetos = new ArrayList<>();
-        for (int line=0;line<this.Alfabetos.getRows();line++){
-            Alfabeto e = new Alfabeto(line,this.Alfabetos.getCell(0,line).getContents(),this.Alfabetos.getCell( 1,line).getContents());
-            lista_alfabetos.add(e);
+    
+
+
+public List<String> getSalidas(){
+     List<String> lista_salidas = new ArrayList<>();
+        for (int line=0;line<this.Salidas.getRows();line++){
+            lista_salidas.add(this.Salidas.getCell(0,line).getContents());
         }
-        return lista_alfabetos;
-    }
+        return lista_salidas;
+
+}
+
+public List<String> getAlgoritmos(){
+     List<String> lista_algoritmos = new ArrayList<>();
+        for (int line=0;line<this.Algoritmos.getRows();line++){
+            lista_algoritmos.add(this.Algoritmos.getCell(0,line).getContents());
+        }
+        return lista_algoritmos;
+
+}
 
 }

@@ -72,12 +72,12 @@ public class Controlador {
             List<String> resultados = new ArrayList<>();
             if (elDTO.isModoCodificacion()){
                 for (int j=0;j<elDTO.getAlgoritmosSelec().size();j++){
-                    resultados.add(this.elAlgoritmo.get(j).codificar(elDTO.getFraseOrigen()));                
+                    resultados.add(this.elAlgoritmo.get(j).codificar(elDTO));                
                 }
             }
             else{
                 for (int j=0;j<elDTO.getAlgoritmosSelec().size();j++){
-                    resultados.add(this.elAlgoritmo.get(j).decodificar(elDTO.getFraseOrigen()));                
+                    resultados.add(this.elAlgoritmo.get(j).decodificar(elDTO));                
                 }
             }
             elDTO.setResultados(resultados);
@@ -96,6 +96,10 @@ public class Controlador {
         System.out.println("******************************");
         System.out.println();
         this.alfabetoActual = this.dbAlfabetos.get(elDTO.getElAlfabeto());
+    }
+    
+    public String getSimbolosAlfabeto(DTOAlgoritmos elDTO){
+        return this.dbAlfabetos.get(elDTO.getElAlfabeto()).getSimbolos();
     }
 
     /**
@@ -139,6 +143,7 @@ public class Controlador {
         System.out.println("******************************");
         System.out.println("Se cargan los algoritmos");
         System.out.println("******************************");
+        this.elAlgoritmo.clear();
         for (int i=0;i<elDTO.getAlgoritmosSelec().size();i++){
             try {
                 String str = elDTO.getAlgoritmosSelec().get(i);
@@ -156,6 +161,7 @@ public class Controlador {
         System.out.println("******************************");
         System.out.println("Se cargan las Salidas");
         System.out.println("******************************");
+        this.elEscritor.clear();
         for (int k=0;k<elDTO.getSalidasSelec().size();k++){
             try {
                 String str = elDTO.getSalidasSelec().get(k);

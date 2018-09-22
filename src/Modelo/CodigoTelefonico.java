@@ -1,6 +1,7 @@
 package Modelo;
 
 
+import Controlador.DTOAlgoritmos;
 import java.util.*;
 
 /**
@@ -27,7 +28,7 @@ public class CodigoTelefonico extends Algoritmo {
      * @param mensaje 
      * @return
      */
-    public String codificar(String mensaje) {
+    public String codificar(DTOAlgoritmos DTO) {
         // TODO implement here
         return "Codifica en Telefonico";
     }
@@ -36,7 +37,7 @@ public class CodigoTelefonico extends Algoritmo {
      * @param mensaje 
      * @return
      */
-    public String decodificar(String mensaje) {
+    public String decodificar(DTOAlgoritmos DTO) {
         // TODO implement here
         return "Decodifica en Telefonico";
     }
@@ -45,7 +46,7 @@ public class CodigoTelefonico extends Algoritmo {
      * @param unAlfabeto 
      * @return
      */
-    public void distribuirAlfabeto(Alfabeto unAlfabeto) {
+    private void distribuirAlfabeto(Alfabeto unAlfabeto) {
         // TODO implement here
     }
 
