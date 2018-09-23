@@ -68,7 +68,7 @@ public class Consola {
             }
             
             System.out.println("Simbolos del Alfabeto seleccionado: "+ctrl.getSimbolosAlfabeto(data));
-
+            System.out.println("* El espacio se puede utilizar en cualquier alfabeto");
             System.out.println();
             System.out.println("Frase para procesar:");
             data.setFraseOrigen(keyFrs.nextLine());

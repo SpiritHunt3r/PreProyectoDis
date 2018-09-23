@@ -23,7 +23,7 @@ public class Transposicion extends Algoritmo {
      * @param mensaje 
      * @return
      */
-    public String codificar(DTOAlgoritmos DTO) {
+    public String codificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
         String[] palabras = DTO.getFraseOrigen().split(" ");
         String r = "";
         for (String palabra : palabras) {
@@ -36,7 +36,7 @@ public class Transposicion extends Algoritmo {
      * @param mensaje 
      * @return
      */
-    public String decodificar(DTOAlgoritmos DTO) {
+    public String decodificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
         String[] palabras = DTO.getFraseOrigen().split(" ");
         String r = "";
         for (String palabra : palabras) {

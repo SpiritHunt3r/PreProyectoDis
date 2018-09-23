@@ -72,12 +72,12 @@ public class Controlador {
             List<String> resultados = new ArrayList<>();
             if (elDTO.isModoCodificacion()){
                 for (int j=0;j<elDTO.getAlgoritmosSelec().size();j++){
-                    resultados.add(this.elAlgoritmo.get(j).codificar(elDTO));                
+                    resultados.add(this.elAlgoritmo.get(j).codificar(elDTO,this.alfabetoActual));                
                 }
             }
             else{
                 for (int j=0;j<elDTO.getAlgoritmosSelec().size();j++){
-                    resultados.add(this.elAlgoritmo.get(j).decodificar(elDTO));                
+                    resultados.add(this.elAlgoritmo.get(j).decodificar(elDTO,this.alfabetoActual));                
                 }
             }
             elDTO.setResultados(resultados);
@@ -115,10 +115,13 @@ public class Controlador {
         List<String> resultados = new ArrayList<>();
             predefinirAlfabeto(elDTO);
             for (int i=0;i<elDTO.getFraseOrigen().length();i++){
+                
                 if (!(containsChar(this.alfabetoActual.getSimbolos(),elDTO.getFraseOrigen().charAt(i)))){
-                    resultados.add("Frase con caracter invalido");
-                    elDTO.setResultados(resultados);
-                    return false;
+                        if (!(elDTO.getFraseOrigen().charAt(i) == ' ')){
+                            resultados.add("Frase con caracter invalido");
+                            elDTO.setResultados(resultados);
+                            return false;
+                        }
                 }
             }
         return true;
