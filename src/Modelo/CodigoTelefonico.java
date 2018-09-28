@@ -29,7 +29,7 @@ public class CodigoTelefonico extends Algoritmo {
      * @return
      */
     public String codificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
-        // TODO implement here
+        String[] data = distribuirAlfabeto(alfabeto);
         return "Codifica en Telefonico";
     }
 
@@ -38,7 +38,7 @@ public class CodigoTelefonico extends Algoritmo {
      * @return
      */
     public String decodificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
-        // TODO implement here
+        String[] data = distribuirAlfabeto(alfabeto);
         return "Decodifica en Telefonico";
     }
 
@@ -46,8 +46,24 @@ public class CodigoTelefonico extends Algoritmo {
      * @param unAlfabeto 
      * @return
      */
-    private void distribuirAlfabeto(Alfabeto unAlfabeto) {
-        // TODO implement here
+    private String[] distribuirAlfabeto(Alfabeto unAlfabeto) {
+        String sim = unAlfabeto.getSimbolos();
+        int size = (int) Math.round(sim.length()/10.0);
+        int pos = 0;
+        String[] matriz = new String[10];
+        for (int i=0;i<10;i++){
+            if (pos > sim.length()){
+                break;
+            }
+            else if (pos+size < sim.length()){
+                matriz[i] = sim.substring(pos, pos+size);
+            } 
+            else{
+                matriz[i] = sim.substring(pos,sim.length());
+            }
+            pos+=size;
+        }
+        return matriz;
     }
 
 }

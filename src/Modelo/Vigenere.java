@@ -55,7 +55,6 @@ public class Vigenere extends Algoritmo {
         for (int i=0;i<charArray.length;i++){
             if(charArray[i] == ' '){
                 r+= " ";
-                primero = !primero;
             }
             else{
                 if (primero) {
