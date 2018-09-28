@@ -48,7 +48,16 @@ public class CodigoTelefonico extends Algoritmo {
      */
     private String[] distribuirAlfabeto(Alfabeto unAlfabeto) {
         String sim = unAlfabeto.getSimbolos();
-        int size = (int) Math.round(sim.length()/10.0);
+        int entero = sim.length() / 10;
+        double flotante = sim.length() / 10.0;
+        int size;
+        
+        if (flotante > (float) entero){
+            size = entero+1;
+        }
+        else{
+            size = entero;
+        }
         int pos = 0;
         String[] matriz = new String[10];
         for (int i=0;i<10;i++){

@@ -330,7 +330,6 @@ public class GUI extends javax.swing.JFrame {
             data.setAlgoritmosSelec(selectedAlgoritmos);
             data.setSalidasSelec(selectedSalidas);
             data.setElAlfabeto(alfabeto);
-            System.out.print(data.getSalidasSelec().toString());
             if (getSelectedButtonText(codificar_decodificar).equals("Codificar")){
                 data.setModoCodificacion(true);
             }
