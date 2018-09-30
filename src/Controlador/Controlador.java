@@ -113,9 +113,60 @@ public class Controlador {
         System.out.println("******************************");
         System.out.println();
         List<String> resultados = new ArrayList<>();
-            predefinirAlfabeto(elDTO);
+        predefinirAlfabeto(elDTO);
+        boolean isBinario = false,isCodigoTelefonico = false;
+        for (int k=0;k<elDTO.getAlgoritmosSelec().size();k++){
+            if (elDTO.getAlgoritmosSelec().get(k).equals("CodigoTelefonico")){
+                isCodigoTelefonico = true;
+            }
+            if (elDTO.getAlgoritmosSelec().get(k).equals("Binario")){
+                isBinario = true;
+            }
+        }
+        if (isCodigoTelefonico && !(elDTO.isModoCodificacion())){
+            String[] data = elDTO.getFraseOrigen().split(" ");
+            int[] valores = getMaxIndexAlfabeto();
+            for (int i=0;i<data.length;i++){
+                try{
+                    if (Integer.valueOf(data[i]) >= (valores[1]*10+valores[2]) || Integer.valueOf(data[i]) % 10 > valores[0]){
+                        resultados.add("Frase con valor no codificable");
+                        elDTO.setResultados(resultados);
+                        return false;
+                    }   
+                }
+                catch (Exception e){
+                if (data[i] == "*"){
+                    resultados.add("Frase con caracter invalido");
+                    elDTO.setResultados(resultados);
+                    return false;
+                    }
+                }
+                }
+            }
+        else if (isBinario && !(elDTO.isModoCodificacion())){
+            String[] data = elDTO.getFraseOrigen().split(" ");
+            for (int i=0;i<data.length;i++){
+                if(data[i].matches("[01]+")){
+                    int a = Integer.parseInt(data[i],2);
+                    if (a > this.alfabetoActual.getSimbolos().length()){
+                        resultados.add("Frase con caracteraa invalido");
+                        elDTO.setResultados(resultados);
+                        return false;
+                    }
+                    
+                }
+                else if (!(data[i] == "*")){
+                    
+                }
+                else{
+                    resultados.add("Frase con caracter invalido");
+                    elDTO.setResultados(resultados);
+                    return false;
+                }
+            }
+        }
+        else {
             for (int i=0;i<elDTO.getFraseOrigen().length();i++){
-                
                 if (!(containsChar(this.alfabetoActual.getSimbolos(),elDTO.getFraseOrigen().charAt(i)))){
                         if (!(elDTO.getFraseOrigen().charAt(i) == ' ')){
                             resultados.add("Frase con caracter invalido");
@@ -124,18 +175,14 @@ public class Controlador {
                         }
                 }
             }
+        }
         return true;
     }
 
     
     
     
-    private boolean containsChar(String s, char search) {
-    if (s.length() == 0)
-        return false;
-    else
-        return s.charAt(0) == search || containsChar(s.substring(1), search);
-    }
+    
     
     /**
      * @param elDTO 
@@ -198,6 +245,44 @@ public class Controlador {
                 }
             }
             DTO.setResultados(resultados);
+    }
+    
+    
+    
+    
+    private int[] getMaxIndexAlfabeto() {
+        int[] data = new int[3];
+        String sim = this.alfabetoActual.getSimbolos();
+        int entero = sim.length() / 10;
+        double flotante = sim.length() / 10.0;
+        int size;
+        if (flotante > (float) entero){
+            size = entero+1;
+            data[2] = size-1;
+        }
+        else{
+            size = entero;
+            data[2] = size;
+        }
+        data[0]=size;
+        int pos = 0;
+        for (int i=0;i<10;i++){
+            if (pos > sim.length()){
+                break;
+            }
+            else{
+                data[1]=i;
+            }
+            pos+=size;
+        }
+        return data;
+    }
+    
+    private boolean containsChar(String s, char search) {
+    if (s.length() == 0)
+        return false;
+    else
+        return s.charAt(0) == search || containsChar(s.substring(1), search);
     }
 
 }
