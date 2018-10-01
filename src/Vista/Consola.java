@@ -133,6 +133,11 @@ public class Consola {
                                     data.setCifra(50);
                                 }
                             }
+                            else if (data.getLosAlgoritmos().get(optTMP).equals("PalabraClave")){
+                                Scanner palabra = new Scanner(System.in);
+                                System.out.print("Ingrese la palabra clave:");
+                                data.setPalabraclave(palabra.nextLine());
+                            }
                         }
 
                     }

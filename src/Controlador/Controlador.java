@@ -114,7 +114,7 @@ public class Controlador {
         System.out.println();
         List<String> resultados = new ArrayList<>();
         predefinirAlfabeto(elDTO);
-        boolean isBinario = false,isCodigoTelefonico = false;
+        boolean isBinario = false,isCodigoTelefonico = false, isPalabraClave = false;
         for (int k=0;k<elDTO.getAlgoritmosSelec().size();k++){
             if (elDTO.getAlgoritmosSelec().get(k).equals("CodigoTelefonico")){
                 isCodigoTelefonico = true;
@@ -122,20 +122,23 @@ public class Controlador {
             if (elDTO.getAlgoritmosSelec().get(k).equals("Binario")){
                 isBinario = true;
             }
+            if (elDTO.getAlgoritmosSelec().get(k).equals("PalabraClave")){
+                isPalabraClave = true;
+            }
         }
         if (isCodigoTelefonico && !(elDTO.isModoCodificacion())){
             String[] data = elDTO.getFraseOrigen().split(" ");
             int[] valores = getMaxIndexAlfabeto();
             for (int i=0;i<data.length;i++){
                 try{
-                    if (Integer.valueOf(data[i]) >= (valores[1]*10+valores[2]) || Integer.valueOf(data[i]) % 10 > valores[0]){
+                    if (Integer.valueOf(data[i])/10 > valores[1] || Integer.valueOf(data[i]) % 10 >= valores[0] || Integer.valueOf(data[i]) >= valores[2]){
                         resultados.add("Frase con valor no codificable");
                         elDTO.setResultados(resultados);
                         return false;
                     }   
                 }
                 catch (Exception e){
-                if (data[i] == "*"){
+                if (!(data[i].equals("*"))){
                     resultados.add("Frase con caracter invalido");
                     elDTO.setResultados(resultados);
                     return false;
@@ -146,6 +149,7 @@ public class Controlador {
         else if (isBinario && !(elDTO.isModoCodificacion())){
             String[] data = elDTO.getFraseOrigen().split(" ");
             for (int i=0;i<data.length;i++){
+                System.out.println(data[i]);
                 if(data[i].matches("[01]+")){
                     int a = Integer.parseInt(data[i],2);
                     if (a > this.alfabetoActual.getSimbolos().length()){
@@ -155,24 +159,42 @@ public class Controlador {
                     }
                     
                 }
-                else if (!(data[i] == "*")){
-                    
-                }
                 else{
-                    resultados.add("Frase con caracter invalido");
-                    elDTO.setResultados(resultados);
-                    return false;
+                    if (!(data[i].equals("*"))){
+                        resultados.add("Frase con caracter invalido");
+                        elDTO.setResultados(resultados);
+                        return false;
+                    }
                 }
             }
         }
         else {
             for (int i=0;i<elDTO.getFraseOrigen().length();i++){
                 if (!(containsChar(this.alfabetoActual.getSimbolos(),elDTO.getFraseOrigen().charAt(i)))){
-                        if (!(elDTO.getFraseOrigen().charAt(i) == ' ')){
+                        if (!(Character.isWhitespace(elDTO.getFraseOrigen().charAt(i)))){
                             resultados.add("Frase con caracter invalido");
                             elDTO.setResultados(resultados);
                             return false;
                         }
+                }
+            }
+        }
+        if (isPalabraClave){
+            if (elDTO.getPalabraclave().isEmpty()){
+                resultados.add("Debe ingresar una palabra clave");
+                elDTO.setResultados(resultados);
+                return false;
+            }
+            for (int i=0;i<elDTO.getPalabraclave().length();i++){
+                if (!(containsChar(this.alfabetoActual.getSimbolos(),elDTO.getPalabraclave().charAt(i)))){
+                        if (Character.isWhitespace(elDTO.getPalabraclave().charAt(i))){
+                            resultados.add("La palabra clave no puede poseer espacios");
+                            elDTO.setResultados(resultados);
+                            return false;
+                        }
+                        resultados.add("Palabra Clave invalida");
+                        elDTO.setResultados(resultados);
+                        return false;
                 }
             }
         }
@@ -258,11 +280,9 @@ public class Controlador {
         int size;
         if (flotante > (float) entero){
             size = entero+1;
-            data[2] = size-1;
         }
         else{
             size = entero;
-            data[2] = size;
         }
         data[0]=size;
         int pos = 0;
@@ -275,6 +295,7 @@ public class Controlador {
             }
             pos+=size;
         }
+        data[2] = 10 * data[1] + size - ((pos)-sim.length());
         return data;
     }
     

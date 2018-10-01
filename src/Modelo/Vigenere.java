@@ -25,12 +25,11 @@ public class Vigenere extends Algoritmo {
      */
     public String codificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
         char[] charArray = DTO.getFraseOrigen().toCharArray();
-        String r = "";
+        String r = "Codificacion en Vigenere: \n";
         boolean primero=true;
         for (int i=0;i<charArray.length;i++){
-            if(charArray[i] == ' '){
-                r+= " ";
-                primero = !primero;
+            if(Character.isWhitespace(charArray[i])){
+                r+= charArray[i];
             }
             else if (primero) {
                 r+= followLetter(alfabeto.getSimbolos(),DTO.getCifra()/10,charArray[i],true);
@@ -50,11 +49,11 @@ public class Vigenere extends Algoritmo {
      */
     public String decodificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
         char[] charArray = DTO.getFraseOrigen().toCharArray();
-        String r = "";
+        String r = "Decodificacion en Vigenere: \n";
         boolean primero=true;
         for (int i=0;i<charArray.length;i++){
-            if(charArray[i] == ' '){
-                r+= " ";
+            if(Character.isWhitespace(charArray[i])){
+                r+= charArray[i];
             }
             else{
                 if (primero) {
@@ -72,28 +71,21 @@ public class Vigenere extends Algoritmo {
     
     private char followLetter(String source,int plus,char start,boolean codificacion){
         int pos = source.indexOf(start);
+        int actual;
         if (codificacion){
-            pos += plus;
-            if (pos <= source.length() || pos >= 0){
-                return source.charAt(pos);
-            }
-            else{
-                pos -= source.length();
-                return source.charAt(pos);
+            actual = pos + plus;
+            if (actual >= source.length()){
+                actual -= source.length();
             }
         }
         else{
-            pos -= plus;
-            if (pos <= source.length() || pos >= 0){
-                return source.charAt(pos);
-            }
-            else{
-                pos += source.length();
-                return source.charAt(pos);
+            actual = pos - plus;
+            if (actual < 0){
+                actual += source.length();
             }
         }
-        
-        
+        System.out.println(actual);
+        return source.charAt(actual);
         
     }
 

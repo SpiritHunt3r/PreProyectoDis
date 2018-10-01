@@ -53,6 +53,7 @@ public class DTOAlgoritmos {
     private List<String> losAlgoritmos;
     private List<String> lasSalidas;
     private int cifra;
+    private String palabraclave;
 
     public int getElAlfabeto() {
         return elAlfabeto;
@@ -126,6 +127,15 @@ public class DTOAlgoritmos {
     public void setCifra(int cifra) {
         this.cifra = cifra;
     }
+
+    public String getPalabraclave() {
+        return palabraclave;
+    }
+
+    public void setPalabraclave(String palabraclave) {
+        this.palabraclave = palabraclave;
+    }
+    
     
     
 
