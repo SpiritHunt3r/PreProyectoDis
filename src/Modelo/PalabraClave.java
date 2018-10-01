@@ -22,7 +22,7 @@ public class PalabraClave extends Algoritmo{
     
 
     public String codificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
-        String r = "Codificacion en PalabraClave: \n";
+        String r = "Codificacion en Palabra Clave: \n";
         int palabraSize = DTO.getPalabraclave().length();
         int pos = 0;
         int charAtFrase, charAtPalabra;
@@ -43,7 +43,7 @@ public class PalabraClave extends Algoritmo{
 
     
     public String decodificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
-        String r = "Decodificacion en PalabraClave: \n";
+        String r = "Decodificacion en Palabra Clave: \n";
         int palabraSize = DTO.getPalabraclave().length();
         int pos = 0;
         int charAtFrase, charAtPalabra;

@@ -32,7 +32,7 @@ public class CodigoTelefonico extends Algoritmo {
         distribuirAlfabeto(alfabeto);
         String frase = DTO.getFraseOrigen();
         char c;
-        String r = "Codificacion en CodigoTelefonico: \n";
+        String r = "Codificacion en Codigo Telefonico: \n";
         for (int i=0;i<frase.length();i++){
             c = frase.charAt(i);
             if (Character.isWhitespace(c)){
@@ -53,7 +53,7 @@ public class CodigoTelefonico extends Algoritmo {
     public String decodificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
         distribuirAlfabeto(alfabeto);
         String[] data = DTO.getFraseOrigen().split(" ");
-        String r = "Decodificacion en CodigoTelefonico: \n";
+        String r = "Decodificacion en Codigo Telefonico: \n";
         for (int i=0; i<data.length;i++){
             if (data[i].charAt(i) == '*'){
                 r+= " ";
