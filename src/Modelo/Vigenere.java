@@ -84,7 +84,6 @@ public class Vigenere extends Algoritmo {
                 actual += source.length();
             }
         }
-        System.out.println(actual);
         return source.charAt(actual);
         
     }

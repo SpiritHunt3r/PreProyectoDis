@@ -45,11 +45,13 @@ public class GUI extends javax.swing.JFrame {
         for (int i=0;i<Alfabetos.size();i++){
            alfabetosComboBox.addItem(Alfabetos.get(i));
         }
+        
         DefaultListModel listModel = new DefaultListModel();
         for (int i=0;i<data.getLosAlgoritmos().size();i++){
            listModel.addElement(data.getLosAlgoritmos().get(i));
         }
         algoritmosList.setModel(listModel);
+        algoritmosList.setSelectedIndex(0);
         DefaultListModel listModel1 = new DefaultListModel();
         for (int i=0;i<data.getLasSalidas().size();i++){
            listModel1.addElement(data.getLasSalidas().get(i));
