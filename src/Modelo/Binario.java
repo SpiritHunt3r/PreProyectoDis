@@ -20,7 +20,7 @@ public class Binario extends Algoritmo{
     }
     
     public String codificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
-        String r= "Codificacion en Binario: \n";
+        String r= "Codificacion en Binario: ";
         char c;
         for (int i=0; i<DTO.getFraseOrigen().length();i++){
             c = DTO.getFraseOrigen().charAt(i);
@@ -35,7 +35,7 @@ public class Binario extends Algoritmo{
     }
     
     public String decodificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
-        String r="Decodificacion en Binario: \n";
+        String r="Decodificacion en Binario: ";
         String[] data = DTO.getFraseOrigen().split(" ");
         int index;
         for (int i=0;i<data.length;i++){

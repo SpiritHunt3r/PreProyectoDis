@@ -25,7 +25,7 @@ public class Vigenere extends Algoritmo {
      */
     public String codificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
         char[] charArray = DTO.getFraseOrigen().toCharArray();
-        String r = "Codificacion en Vigenere: \n";
+        String r = "Codificacion en Vigenere: ";
         boolean primero=true;
         for (int i=0;i<charArray.length;i++){
             if(Character.isWhitespace(charArray[i])){
@@ -49,7 +49,7 @@ public class Vigenere extends Algoritmo {
      */
     public String decodificar(DTOAlgoritmos DTO,Alfabeto alfabeto) {
         char[] charArray = DTO.getFraseOrigen().toCharArray();
-        String r = "Decodificacion en Vigenere: \n";
+        String r = "Decodificacion en Vigenere: ";
         boolean primero=true;
         for (int i=0;i<charArray.length;i++){
             if(Character.isWhitespace(charArray[i])){
