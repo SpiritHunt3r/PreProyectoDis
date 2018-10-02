@@ -1,6 +1,10 @@
 package Controlador;
 
 
+import Generador.FraseBuilder;
+import Generador.FraseConsecutivoDuplicado;
+import Generador.FraseConsecutivoNoDuplicado;
+import Generador.FraseNoConsecutivoNoDuplicado;
 import java.util.*;
 import Modelo.Alfabeto;
 import Modelo.Algoritmo;
@@ -66,7 +70,6 @@ public class Controlador {
      * @return
      */
     public void procesarPeticion(DTOAlgoritmos elDTO) {
-        
         if (validar(elDTO)){
             activarAlgoritmos(elDTO);
             List<String> resultados = new ArrayList<>();
@@ -114,6 +117,7 @@ public class Controlador {
         System.out.println();
         List<String> resultados = new ArrayList<>();
         predefinirAlfabeto(elDTO);
+        elDTO.setFraseOrigen(seleccionarFrase(elDTO));
         boolean isBinario = false,isCodigoTelefonico = false, isPalabraClave = false;
         for (int k=0;k<elDTO.getAlgoritmosSelec().size();k++){
             if (elDTO.getAlgoritmosSelec().get(k).equals("CodigoTelefonico")){
@@ -267,6 +271,34 @@ public class Controlador {
                 }
             }
             DTO.setResultados(resultados);
+    }
+    
+    
+    private String seleccionarFrase(DTOAlgoritmos elDTO){
+        if (elDTO.getModoFrase().equals("Manual")){
+            return elDTO.getFraseOrigen();
+        }
+        else{
+            FraseBuilder fb = null;
+            if (elDTO.getModoFrase().equals("No Duplicado No Consecutivo")){
+                fb = new FraseNoConsecutivoNoDuplicado();
+                if (elDTO.getSizeFrase() >= alfabetoActual.getSimbolos().length()){
+                    elDTO.setSizeFrase(alfabetoActual.getSimbolos().length()-2);
+                }
+            }
+            else if (elDTO.getModoFrase().equals("No Duplicado Consecutivo")){
+                fb = new FraseConsecutivoNoDuplicado();
+                if (elDTO.getSizeFrase() >= alfabetoActual.getSimbolos().length()){
+                    elDTO.setSizeFrase(alfabetoActual.getSimbolos().length()-1);
+                }
+            }
+            else if (elDTO.getModoFrase().equals("Duplicado Consecutivo")){
+                fb = new FraseConsecutivoDuplicado();
+            }
+            fb.setAlfabeto(alfabetoActual);
+            fb.generarFrase(elDTO.getSizeFrase());
+            return fb.toString();
+        }
     }
     
     

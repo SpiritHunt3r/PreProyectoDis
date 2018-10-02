@@ -70,8 +70,55 @@ public class Consola {
             System.out.println("Simbolos del Alfabeto seleccionado: "+ctrl.getSimbolosAlfabeto(data));
             System.out.println("* El espacio se puede utilizar en cualquier alfabeto");
             System.out.println();
-            System.out.println("Frase para procesar:");
-            data.setFraseOrigen(keyFrs.nextLine());
+            check =0;
+            while (check == 0){
+                Scanner modo = new Scanner(System.in);
+                System.out.println();
+                System.out.println("Modos para las frases disponibles:");
+                System.out.println("1 - Manual");
+                System.out.println("2 - No Duplicado No Consecutivo");
+                System.out.println("3 - No Duplicado Consecutivo");
+                System.out.println("4 - Duplicado Consecutivo");
+                System.out.print("Seleccione un modo:");
+                try {
+                    int numModo = modo.nextInt();
+                    if (numModo == 1){
+                        data.setModoFrase("Manual");
+                        System.out.println("Frase para procesar:");
+                        data.setFraseOrigen(keyFrs.nextLine());
+                        check = 1;
+                    }
+                    else if (numModo == 2){
+                        Scanner size = new Scanner(System.in);
+                        data.setModoFrase("No Duplicado No Consecutivo");
+                        System.out.println("El tamaño maximo para esta frase es: " + String.valueOf(ctrl.getSimbolosAlfabeto(data).length()-2));
+                        System.out.println("Ingrese tamaño de la frase:");
+                        data.setSizeFrase(size.nextInt());
+                        check = 1;
+                    }
+                    else if (numModo == 3){
+                        Scanner size = new Scanner(System.in);
+                        data.setModoFrase("No Duplicado Consecutivo");
+                        System.out.println("El tamaño maximo para esta frase es: " + String.valueOf(ctrl.getSimbolosAlfabeto(data).length()-1));
+                        System.out.println("Ingrese tamaño de la frase:");
+                        data.setSizeFrase(size.nextInt());
+                        check = 1;
+                    }
+                    else if (numModo == 4){
+                        Scanner size = new Scanner(System.in);
+                        data.setModoFrase("Duplicado Consecutivo");
+                        System.out.println("Este modo no tiene limite de tamaño");
+                        System.out.println("Ingrese tamaño de la frase:");
+                        data.setSizeFrase(size.nextInt());
+                        check = 1;
+                    }
+                }
+                catch (Exception e){
+                    System.out.println("Debe ingresar un valor numerico valido");
+                }
+            }
+            
+            
             
             
             check =0;
@@ -210,9 +257,9 @@ public class Consola {
             
             Scanner key = new Scanner(System.in);
             System.out.println();
-            System.out.print("Desea realizar otra operacion:(Y/N)");
+            System.out.print("Desea realizar otra operacion:(S/N)");
             String r = key.nextLine();
-            if (r.equals("Y")||r.equals("y")){
+            if (r.equals("S")||r.equals("s")){
                 menu();
             }
             
