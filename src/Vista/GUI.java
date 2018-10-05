@@ -180,7 +180,12 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel8.setText("Simbolos:");
 
-        jButton2.setText("Agregar Alfabeto");
+        jButton2.setText("CRUD Alfabeto");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Agregar Algoritmo");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -288,9 +293,9 @@ public class GUI extends javax.swing.JFrame {
                                             .addComponent(jLabel10)
                                             .addComponent(palabraClave, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(26, 26, 26)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jButton3)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -470,6 +475,11 @@ public class GUI extends javax.swing.JFrame {
         fraseTxt.setEditable(false);
         sizeFrase.setEnabled(true);
     }//GEN-LAST:event_jRadioButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+        new CRUDAlfabeto().setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
     public String getSelectedButtonText(ButtonGroup buttonGroup) {
