@@ -36,6 +36,8 @@ public class Consola {
 
         Scanner keyFrs = new Scanner(System.in);
         
+        data.setCifra(50);
+        data.setPalabraclave("");
         
         int check=0,optTMP;
         
