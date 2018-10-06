@@ -7,8 +7,14 @@ package Vista;
 
 import Controlador.DaoAlfabetos;
 import Modelo.Alfabeto;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.List;
+import javafx.stage.FileChooser;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -23,12 +29,13 @@ public class CRUDAlfabeto extends javax.swing.JFrame {
     
     public CRUDAlfabeto() {
         initComponents();
+        BD = new DaoAlfabetos();
         cargarInfo();
         
     }
     
     private void cargarInfo(){
-        BD = new DaoAlfabetos();
+        BD.refresh();
         List<Alfabeto> alfabetos = BD.getAlfabetos();
         alfabetosList.removeAllItems();
         for (Alfabeto alfabeto:alfabetos){
@@ -83,6 +90,11 @@ public class CRUDAlfabeto extends javax.swing.JFrame {
         });
 
         jButton1.setText("Cargar Alfabeto");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -129,40 +141,41 @@ public class CRUDAlfabeto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton5)
+                                .addGap(26, 26, 26)))
+                        .addComponent(jButton3)
+                        .addGap(29, 29, 29))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 65, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(alfabetoNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(130, 130, 130)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(alfabetosList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(alfabetosList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(alfabetoSimbolos)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton2)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton5)
-                                        .addGap(26, 26, 26)))
-                                .addComponent(jButton3))
-                            .addComponent(alfabetoNombre, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(29, 29, 29))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(alfabetoSimbolos))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,23 +270,32 @@ public class CRUDAlfabeto extends javax.swing.JFrame {
     }//GEN-LAST:event_alfabetosListActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        Alfabeto test = new Alfabeto();
-        test.setId(alfabetosList.getSelectedIndex());
-        test.setNombre(alfabetosList.getSelectedItem().toString());
-        if (BD.eliminar(test)){
-            System.out.println();
-            System.out.println("******************************");
-            System.out.println("Se eliminio el Alfabeto "+test.getNombre()+" correctamente");
-            System.out.println("******************************");
-            JOptionPane.showMessageDialog(null,"Se eliminio el Alfabeto "+test.getNombre()+" correctamente");
-            cargarInfo();
-        }
-        else{
+        if (this.BD.getAlfabetos().size() <= 1){
             System.out.println();
             System.out.println("******************************");
             System.out.println("Error al eliminar el Alfabeto");
             System.out.println("******************************");
-            JOptionPane.showMessageDialog(null, "Error al eliminar el Alfabeto");
+            JOptionPane.showMessageDialog(null, "Debe existir al menos un alfabeto");
+        }
+        else{
+            Alfabeto test = new Alfabeto();
+            test.setId(alfabetosList.getSelectedIndex());
+            test.setNombre(alfabetosList.getSelectedItem().toString());
+            if (BD.eliminar(test)){
+                System.out.println();
+                System.out.println("******************************");
+                System.out.println("Se eliminio el Alfabeto "+test.getNombre()+" correctamente");
+                System.out.println("******************************");
+                JOptionPane.showMessageDialog(null,"Se eliminio el Alfabeto "+test.getNombre()+" correctamente");
+                cargarInfo();
+            }
+            else{
+                System.out.println();
+                System.out.println("******************************");
+                System.out.println("Error al eliminar el Alfabeto");
+                System.out.println("******************************");
+                JOptionPane.showMessageDialog(null, "Error al eliminar el Alfabeto");
+            }
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -301,6 +323,27 @@ public class CRUDAlfabeto extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    try{
+        String dir = System.getProperty("user.home") + "/Desktop/";
+        JFileChooser fc = new JFileChooser(dir);
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("TEXT FILES", "txt", "text");
+        fc.setFileFilter(filter);
+        fc.showDialog(null, "Agregar Archivo");
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        File selected = fc.getSelectedFile();
+        String Nombre = selected.getName().substring(0, selected.getName().length()-4);
+        BufferedReader br = new BufferedReader(new FileReader(selected.getPath()));
+        String Simbolos = br.readLine();
+        this.alfabetoNombre.setText(Nombre);
+        this.alfabetoSimbolos.setText(Simbolos);
+    }
+    catch (Exception e){
+        
+    }
+    
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
