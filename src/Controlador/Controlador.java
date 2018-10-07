@@ -262,7 +262,7 @@ public class Controlador {
      * @param DTO 
      * @return
      */
-    public void escribir(DTOAlgoritmos DTO) {
+    private void escribir(DTOAlgoritmos DTO) {
         
         List<String> resultados = DTO.getResultados();
         for (int k=0;k<DTO.getSalidasSelec().size();k++){

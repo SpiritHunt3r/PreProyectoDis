@@ -3,7 +3,6 @@ package Modelo;
 
 import java.util.*;
 import Controlador.DTOAlgoritmos;
-import Modelo.IEscritor;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;

@@ -4,7 +4,6 @@ package Modelo;
 
 import java.util.*;
 import Controlador.DTOAlgoritmos;
-import Modelo.IEscritor;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
