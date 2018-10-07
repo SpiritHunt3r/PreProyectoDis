@@ -465,7 +465,8 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_alfabetosComboBoxActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        new CDAlgoritmo().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed

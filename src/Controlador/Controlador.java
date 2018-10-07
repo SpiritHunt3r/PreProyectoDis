@@ -88,6 +88,11 @@ public class Controlador {
         }
     }
 
+    public String getSimbolosAlfabeto(DTOAlgoritmos elDTO){
+        return this.dbAlfabetos.get(elDTO.getElAlfabeto()).getSimbolos();
+    }
+    
+    
     /**
      * @param elDTO 
      * @return
@@ -101,9 +106,7 @@ public class Controlador {
         this.alfabetoActual = this.dbAlfabetos.get(elDTO.getElAlfabeto());
     }
     
-    public String getSimbolosAlfabeto(DTOAlgoritmos elDTO){
-        return this.dbAlfabetos.get(elDTO.getElAlfabeto()).getSimbolos();
-    }
+    
 
     /**
      * @param elDTO 

@@ -55,14 +55,13 @@ public class CodigoTelefonico extends Algoritmo {
         String[] data = DTO.getFraseOrigen().split(" ");
         String r = "Decodificacion en Codigo Telefonico: ";
         for (int i=0; i<data.length;i++){
-            if (data[i].charAt(i) == '*'){
+            if (data[i].charAt(0) == '*'){
                 r+= " ";
             }
             else{
                 int p = Character.getNumericValue(data[i].charAt(0));
                 int q = Character.getNumericValue(data[i].charAt(1));
                 r+= matriz[p].charAt(q);
-                
             }
             
         }
