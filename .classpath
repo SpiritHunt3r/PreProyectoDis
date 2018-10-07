@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="dist/lib/io-7.1.3.jar"/>
+	<classpathentry kind="lib" path="dist/lib/jxl.jar"/>
+	<classpathentry kind="lib" path="dist/lib/kernel-7.1.3.jar"/>
+	<classpathentry kind="lib" path="dist/lib/layout-7.1.3.jar"/>
+	<classpathentry kind="lib" path="dist/lib/LibsProyecto.jar"/>
+	<classpathentry kind="lib" path="dist/lib/pdftest-7.1.3.jar"/>
+	<classpathentry kind="lib" path="dist/lib/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="dist/lib/slf4j-simple-1.7.25.jar"/>
+	<classpathentry kind="lib" path="dist/PreProyecto.jar"/>
+	<classpathentry kind="lib" path="nbproject/libs/io-7.1.3.jar"/>
+	<classpathentry kind="lib" path="nbproject/libs/jxl.jar"/>
+	<classpathentry kind="lib" path="nbproject/libs/kernel-7.1.3.jar"/>
+	<classpathentry kind="lib" path="nbproject/libs/layout-7.1.3.jar"/>
+	<classpathentry kind="lib" path="nbproject/libs/pdftest-7.1.3.jar"/>
+	<classpathentry kind="lib" path="nbproject/libs/slf4j-api-1.7.25.jar"/>
+	<classpathentry kind="lib" path="nbproject/libs/slf4j-simple-1.7.25.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>
