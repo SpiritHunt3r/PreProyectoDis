@@ -11,7 +11,7 @@ package servidor;
 import Comunicacion.ObjetoComunicador;
 import Controlador.DTOAlgoritmos;
 import Comunicacion.TipoAccion;
-import administrador.AdmServidor;
+import Controlador.AdmServidor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;

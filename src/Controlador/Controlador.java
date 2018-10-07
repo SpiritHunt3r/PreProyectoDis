@@ -8,17 +8,7 @@ import Generador.FraseNoConsecutivoNoDuplicado;
 import java.util.*;
 import Modelo.Alfabeto;
 import Modelo.Algoritmo;
-import Modelo.CodigoTelefonico;
-import Modelo.EscritorPDF;
-import Modelo.EscritorTxT;
-import Modelo.EscritorXML;
 import Modelo.IEscritor;
-import Modelo.Transposicion;
-import Modelo.Vigenere;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

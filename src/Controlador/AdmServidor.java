@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package administrador;
+package Controlador;
 
 import Comunicacion.ObjetoComunicador;
 import Controlador.Controlador;
