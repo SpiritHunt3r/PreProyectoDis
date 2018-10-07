@@ -8,7 +8,9 @@ package servidor;
 //import administrador.AdmServidor;
 //import administrador.Estadistica;
 //import administrador.Usuario;
+import Comunicacion.ObjetoComunicador;
 import Controlador.DTOAlgoritmos;
+import Comunicacion.TipoAccion;
 import administrador.AdmServidor;
 import java.io.IOException;
 import java.io.InputStream;
@@ -98,8 +100,24 @@ public class Servidor {
 
 private void procesePeticion(JTextArea log) {
         try {
-            DTOAlgoritmos objeto = (DTOAlgoritmos) flujoEntrada.readObject();
+            ObjetoComunicador obj = (ObjetoComunicador) flujoEntrada.readObject();
             // detectar lo que le enviaron...
+            if (obj.getAccion() == TipoAccion.GET_DTO){
+                log.setText(log.getText()+ "\nAtendiendo peticion OBTIENE EL DTO..");
+                obj.setDatoSalida(adm.getDTO(obj));
+            }
+            if (obj.getAccion() == TipoAccion.PROCESAR_PETICION){
+                log.setText(log.getText()+ "\nAtendiendo peticion PROCESAR PETICION..");
+                obj.setDatoSalida(adm.procesarPeticion(obj));
+            }
+            if (obj.getAccion() == TipoAccion.GET_SIMBOLOS_ALFABETO){
+                log.setText(log.getText()+ "\nAtendiendo peticion OBTENER SIMBOLOS..");
+                obj.setDatoSalida(adm.geSimbolosAlfabeto(obj));
+            }
+            if (obj.getAccion() == TipoAccion.CARGAR_ALFABETO){
+                log.setText(log.getText()+ "\nAtendiendo peticion CARGAR ALFABETOS..");
+                obj.setDatoSalida(adm.cargarAlfabetos());
+            }
             
             /*
             if (objeto.getAccion() == TipoAccion.REGISTRAR_USUARIO){
@@ -130,7 +148,7 @@ private void procesePeticion(JTextArea log) {
              */
              
 
-           flujoSalida.writeObject(objeto);
+           flujoSalida.writeObject(obj);
         } catch (IOException ex) {
             System.out.println("Problemas leyendo o escribiendo en el flujo entrada/salida");
         } catch (ClassNotFoundException ex) {

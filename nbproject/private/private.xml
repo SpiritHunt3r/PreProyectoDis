@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/juan_/Documents/NetBeansProjects/PreProyectoDis/src/Vista/CDAlgoritmo.java</file>
-            <file>file:/C:/Users/juan_/Documents/NetBeansProjects/PreProyectoDis/src/Vista/GUI.java</file>
-            <file>file:/C:/Users/juan_/Documents/NetBeansProjects/PreProyectoDis/src/Modelo/EscritorXML.java</file>
-            <file>file:/C:/Users/juan_/Documents/NetBeansProjects/PreProyectoDis/src/Vista/CRUDAlfabeto.java</file>
-            <file>file:/C:/Users/juan_/Documents/NetBeansProjects/PreProyectoDis/src/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/ayma-93/Documents/Semestre%20II%20-%202018/Diseño%20de%20Software/Tareas/Proyecto/Etapa%201/PreProyectoDis/src/Controlador/Controlador.java</file>
+            <file>file:/C:/Users/ayma-93/Documents/Semestre%20II%20-%202018/Diseño%20de%20Software/Tareas/Proyecto/Etapa%201/PreProyectoDis/src/servidor/Servidor.java</file>
+            <file>file:/C:/Users/ayma-93/Documents/Semestre%20II%20-%202018/Diseño%20de%20Software/Tareas/Proyecto/Etapa%201/PreProyectoDis/src/Vista/FrServidor.java</file>
+            <file>file:/C:/Users/ayma-93/Documents/Semestre%20II%20-%202018/Diseño%20de%20Software/Tareas/Proyecto/Etapa%201/PreProyectoDis/src/Vista/CDAlgoritmo.java</file>
+            <file>file:/C:/Users/ayma-93/Documents/Semestre%20II%20-%202018/Diseño%20de%20Software/Tareas/Proyecto/Etapa%201/PreProyectoDis/src/Vista/CRUDAlfabeto.java</file>
+            <file>file:/C:/Users/ayma-93/Documents/Semestre%20II%20-%202018/Diseño%20de%20Software/Tareas/Proyecto/Etapa%201/PreProyectoDis/src/administrador/AdmServidor.java</file>
         </group>
     </open-files>
 </project-private>

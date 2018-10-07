@@ -4,9 +4,11 @@
  */
 package administrador;
 
+import Comunicacion.ObjetoComunicador;
 import Controlador.Controlador;
 import Controlador.DTOAlgoritmos;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,8 +22,25 @@ public class AdmServidor {
         controlador= new Controlador();
     }
     
-    public void procesarPeticion(DTOAlgoritmos dto){
-        
+    public ObjetoComunicador procesarPeticion(ObjetoComunicador obj){
+        DTOAlgoritmos data = obj.getDatos();
+        controlador.procesarPeticion(data);
+        obj.setDatos(data);
+        return obj;
+    }
+    
+    public String geSimbolosAlfabeto(ObjetoComunicador obj){
+        String  simbolosAlfabeto = controlador.getSimbolosAlfabeto((DTOAlgoritmos) obj.getDatoEntrada());
+        return simbolosAlfabeto;
+    }
+    
+    public List<String> cargarAlfabetos(){
+        return controlador.cargarAlfabetos();
+    }
+    
+    public ObjetoComunicador getDTO(ObjetoComunicador obj){
+        obj.setDatos(new DTOAlgoritmos());
+        return obj;
     }
     /*
     public boolean registrar(String login){
